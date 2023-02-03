@@ -15,7 +15,11 @@ void printBoard();
 int checkNeighbours(int, int);
 
 void cycle();
-
+/*
+ * checkNeigh gibt x um eine zelle herum zurück
+ * in cycle je nach inhalt und neighbours zelle in neuem board verwalten
+ * altes board durch neues ersetzen
+ */
 int main() {
     //anfangsmuster ausgeben
 
