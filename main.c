@@ -28,7 +28,7 @@ int main() {
         //wenn eigenes, schleife mit koordinatenabfrage
 
     //
-
+    cycle();
     printBoard();
     printf("\n");
     printf("%d\n", checkNeighbours(0, 0));
@@ -37,21 +37,32 @@ int main() {
 }
 
 void cycle(){
-    char boardZwei[BOARDWIDTH][BOARDHEIGHT] =
-    {
-        {'X', ' ', ' ', ' ', ' '},
-        {'X', ' ', ' ', ' ', ' '},
-        {'X', ' ', ' ', ' ', ' '},
-        {'X', ' ', ' ', ' ', ' '},
-        {'X', ' ', ' ', ' ', ' '}};
+    char boardZwei[BOARDWIDTH][BOARDHEIGHT];
 
     for(int i = 1; i < BOARDWIDTH-1; i++){
         for(int j = 1; j < BOARDHEIGHT-1; j++){
 
             if(board[i][j] == 'X'){
+
                 int neigh = checkNeighbours(i, j);
 
+                if(board[i][j] == 'X'){
+                    if(neigh == 2 || neigh == 3) boardZwei[i][j] = 'X';
+                    else boardZwei[i][j] = ' ';
+                }
+
+                if(board[i][j] == ' '){
+                    if(neigh == 3) boardZwei[i][j] = 'X';
+                    else boardZwei[i][j] = ' ';
+                }
             }
+        }
+    }
+
+    for(int i = 1; i < BOARDWIDTH-1; i++){
+        for(int j = 1; j < BOARDHEIGHT-1; j++) {
+
+            board[i][j] = boardZwei[i][j];
         }
     }
 }
