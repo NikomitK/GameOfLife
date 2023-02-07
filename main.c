@@ -73,7 +73,7 @@ int checkNeighbours(int row, int col){
 
     for(int i = -1; i <= 1; i++) {
         int tempi = i;
-        //checkOutOfBounds fr i eventuell auslagern
+        //checkOutOfBounds für i eventuell auslagern
         if(row + tempi == -1) tempi = BOARDHEIGHT-1;
         if(row + tempi == BOARDHEIGHT + 1) tempi = 0;
         for (int j = -1; j <= 1; j++) {
