@@ -1,14 +1,14 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 #define BOARDWIDTH 5
 #define BOARDHEIGHT 5
 
 char board[BOARDWIDTH][BOARDHEIGHT]  = {
-        {'X', 'X', ' ', ' ', 'X'},
-        {'X', 'X', ' ', ' ', 'X'},
-        {'X', ' ', ' ', ' ', ' '},
-        {'X', ' ', ' ', ' ', 'X'},
-        {'X', 'X', ' ', ' ', 'X'}};
+        {' ', 'X', ' ', ' ', ' '},
+        {' ', 'X', ' ', ' ', ' '},
+        {' ', 'X', ' ', ' ', ' '},
+        {' ', ' ', ' ', ' ', ' '},
+        {' ', ' ', ' ', ' ', ' '}};
 
 void printBoard();
 
@@ -27,22 +27,27 @@ int main() {
 
         //wenn eigenes, schleife mit koordinatenabfrage
 
-    //
-    cycle();
-    printBoard();
-    printf("\n");
-    printf("%d\n", checkNeighbours(0, 0));
+    int i = 0;
+    while(i < 100) {
+        cycle();
+        printBoard();
+        system("cls");
+        i++;
+    }
     return 0;
 
 }
 
 void cycle(){
-    char boardZwei[BOARDWIDTH][BOARDHEIGHT];
+    char boardZwei[BOARDWIDTH][BOARDHEIGHT] = {
+            {' ', ' ', ' ', ' ', ' '},
+            {' ', ' ', ' ', ' ', ' '},
+            {' ', ' ', ' ', ' ', ' '},
+            {' ', ' ', ' ', ' ', ' '},
+            {' ', ' ', ' ', ' ', ' '}};
 
-    for(int i = 1; i < BOARDWIDTH-1; i++){
-        for(int j = 1; j < BOARDHEIGHT-1; j++){
-
-            if(board[i][j] == 'X'){
+    for(int i = 0; i < BOARDWIDTH; i++){
+        for(int j = 0; j < BOARDHEIGHT; j++){
 
                 int neigh = checkNeighbours(i, j);
 
@@ -57,10 +62,9 @@ void cycle(){
                 }
             }
         }
-    }
 
-    for(int i = 1; i < BOARDWIDTH-1; i++){
-        for(int j = 1; j < BOARDHEIGHT-1; j++) {
+    for(int i = 0; i < BOARDWIDTH; i++){
+        for(int j = 0; j < BOARDHEIGHT; j++) {
 
             board[i][j] = boardZwei[i][j];
         }
@@ -82,10 +86,11 @@ int checkNeighbours(int row, int col){
             if(col + tempj == -1) tempj = BOARDWIDTH-1;
             if(col + tempj == -1) tempj = 0;
             if (i == 0 && j == 0) continue;
-            printf("%d//%d//", tempj, tempi);
+            //printf("%d//%d//", tempj, tempi);
             if (board[row + tempi][col + tempj] == 'X'){
                 x_count += 1;
-                printf("gefunden\n");}
+                //printf("gefunden\n");
+                }
         }
     }
 
@@ -96,7 +101,7 @@ int checkNeighbours(int row, int col){
 
 void printBoard(){
     for(int i = 0; i < BOARDWIDTH; i++) {
-        printf("| ");
+        //printf("| ");
         for (int j = 0; j < BOARDHEIGHT; j++) {
             printf("%c | ", board[i][j]);
         }
