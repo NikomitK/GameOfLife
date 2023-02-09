@@ -6,11 +6,11 @@
 #define BOARDHEIGHT 5
 
 char board[BOARDWIDTH][BOARDHEIGHT]  = {
+        {' ', ' ', ' ', ' ', 'X'},
         {' ', ' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ', 'X'},
-        {' ', ' ', ' ', ' ', 'X'},
-        {' ', ' ', ' ', ' ', 'X'},
-        {' ', ' ', ' ', ' ', ' '}};
+        {' ', ' ', ' ', ' ', ' '},
+        {' ', ' ', ' ', ' ', ' '},
+        {'X', ' ', ' ', ' ', 'X'}};
 
 void printBoard();
 
@@ -33,7 +33,7 @@ int main() {
     while(i < 100) {
         cycle();
         printBoard();
-        sleep(3);
+        sleep(1);
         system("cls");
         i++;
     }
@@ -78,19 +78,19 @@ int checkNeighbours(int row, int col){
 
     int x_count = 0;
 
-    for(int i = -1; i <= 1; i++) {
+    for(int i = row-1; i <= row+1; i++) {
         int tempi = i;
         //checkOutOfBounds für i eventuell auslagern
-        if(row + tempi == -1) tempi = BOARDHEIGHT - 1;
-        if(row + tempi == BOARDHEIGHT) tempi = BOARDHEIGHT - 1;
-        for (int j = -1; j <= 1; j++) {
+        if(tempi == -1) tempi = BOARDHEIGHT - 1;
+        if(tempi == BOARDHEIGHT) tempi = 0;
+        for (int j = col-1; j <= col+1; j++) {
             int tempj = j;
             //checkOutOfBounds für j eventuell auslagern
-            if(col + tempj == -1) tempj = BOARDWIDTH - 1;
-            if(col + tempj == BOARDWIDTH) tempj = BOARDWIDTH - 1;
-            if (i == 0 && j == 0) continue;
+            if(tempj == -1) tempj = BOARDWIDTH - 1;
+            if(tempj == BOARDWIDTH) tempj = 0;
+            if (i == row && j == col) continue;
             //printf("%d//%d//", tempj, tempi);
-            if (board[row + tempi][col + tempj] == 'X'){
+            if (board[tempi][tempj] == 'X'){
                 x_count += 1;
                 //printf("gefunden\n");
                 }
