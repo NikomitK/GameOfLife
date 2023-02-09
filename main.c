@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
 #define BOARDWIDTH 5
 #define BOARDHEIGHT 5
 
 char board[BOARDWIDTH][BOARDHEIGHT]  = {
-        {' ', 'X', ' ', ' ', ' '},
-        {' ', 'X', ' ', ' ', ' '},
-        {' ', 'X', ' ', ' ', ' '},
         {' ', ' ', ' ', ' ', ' '},
+        {' ', ' ', ' ', ' ', 'X'},
+        {' ', ' ', ' ', ' ', 'X'},
+        {' ', ' ', ' ', ' ', 'X'},
         {' ', ' ', ' ', ' ', ' '}};
 
 void printBoard();
@@ -26,11 +28,12 @@ int main() {
     //auswahl muster oder eigenes
 
         //wenn eigenes, schleife mit koordinatenabfrage
-
+    checkNeighbours(1, 4);
     int i = 0;
     while(i < 100) {
         cycle();
         printBoard();
+        sleep(3);
         system("cls");
         i++;
     }
@@ -78,13 +81,13 @@ int checkNeighbours(int row, int col){
     for(int i = -1; i <= 1; i++) {
         int tempi = i;
         //checkOutOfBounds für i eventuell auslagern
-        if(row + tempi == -1) tempi = BOARDHEIGHT-1;
-        if(row + tempi == BOARDHEIGHT + 1) tempi = 0;
+        if(row + tempi == -1) tempi = BOARDHEIGHT - 1;
+        if(row + tempi == BOARDHEIGHT) tempi = BOARDHEIGHT - 1;
         for (int j = -1; j <= 1; j++) {
             int tempj = j;
             //checkOutOfBounds für j eventuell auslagern
-            if(col + tempj == -1) tempj = BOARDWIDTH-1;
-            if(col + tempj == -1) tempj = 0;
+            if(col + tempj == -1) tempj = BOARDWIDTH - 1;
+            if(col + tempj == BOARDWIDTH) tempj = BOARDWIDTH - 1;
             if (i == 0 && j == 0) continue;
             //printf("%d//%d//", tempj, tempi);
             if (board[row + tempi][col + tempj] == 'X'){
@@ -101,7 +104,7 @@ int checkNeighbours(int row, int col){
 
 void printBoard(){
     for(int i = 0; i < BOARDWIDTH; i++) {
-        //printf("| ");
+        printf("| ");
         for (int j = 0; j < BOARDHEIGHT; j++) {
             printf("%c | ", board[i][j]);
         }
