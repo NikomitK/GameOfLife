@@ -7,12 +7,9 @@
 
 #define MOD(a,b) ((((a)%(b))+(b))%(b))
 
-char board[BOARDHEIGHT][BOARDWIDTH]  = {
-                                                {' ', ' ', ' ', ' ', ' '},
-                                                {' ', ' ', ' ', ' ', ' '},
-                                                {'X', 'X', ' ', ' ', 'X'},
-                                                {' ', ' ', ' ', ' ', ' '},
-                                                {' ', ' ', ' ', ' ', ' '}};
+void createBoard(char*[BOARDHEIGHT][BOARDWIDTH]);
+
+char board[BOARDHEIGHT][BOARDWIDTH];
 
 
 void printBoard();
@@ -26,6 +23,8 @@ void cycle();
  * altes board durch neues ersetzen
  */
 int main() {
+    createBoard(board);
+    printBoard();
     //anfangsmuster ausgeben
 
     //auswahl muster oder eigenes
@@ -43,6 +42,14 @@ int main() {
     }
     return 0;
 
+}
+
+void createBoard(char* emptyboard[BOARDHEIGHT][BOARDWIDTH]){
+    for(int i = 0; i<BOARDHEIGHT; i++){
+        for(int j = 0; j<BOARDWIDTH; j++){
+            *emptyboard[i][j] = ' ';
+        }
+    }
 }
 
 void cycle(){
