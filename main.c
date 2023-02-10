@@ -12,6 +12,20 @@ void createBoards();
 char board[BOARDHEIGHT][BOARDWIDTH];
 char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
+void setCustomCells(){
+    //TODO cancel loop
+    bool cont = true;
+    while(cont){
+        printf("Bitte Koordinaten eingeben <zeile spalte>");
+        int zeile, spalte;
+        scanf("%d %d", &zeile, &spalte);
+        if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1) printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
+        else {
+            board[zeile][spalte] = 'X';
+        }
+    }
+}
+
 void printBoard();
 
 int checkNeighbours(int, int);
