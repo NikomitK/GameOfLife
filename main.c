@@ -14,13 +14,16 @@ char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 void setCustomCells(){
     //TODO cancel loop
-    bool cont = true;
-    while(cont){
+    printf("Wie viele Koordinaten willst du eingeben?");
+    int cont;
+    scanf("%d", &cont);
+    for(int i = 0; i<cont; i++){
         printf("Bitte Koordinaten eingeben <zeile spalte>");
         int zeile, spalte;
         scanf("%d %d", &zeile, &spalte);
-        if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1) printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
-        else {
+        if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1){
+             printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
+        } else {
             board[zeile][spalte] = 'X';
         }
     }
