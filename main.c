@@ -13,7 +13,6 @@ char board[BOARDHEIGHT][BOARDWIDTH];
 char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 void setCustomCells(){
-    //TODO cancel loop
     printf("Wie viele Koordinaten willst du eingeben?");
     int cont;
     scanf("%d", &cont);
