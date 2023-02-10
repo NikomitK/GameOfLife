@@ -121,21 +121,10 @@ int checkNeighbours(int row, int col){
     int x_count = 0;
 
     for(int i = row-1; i <= row+1; i++) {
-        int tempi = i;
-        //checkOutOfBounds für i eventuell auslagern
-        if(tempi == -1) tempi = BOARDHEIGHT - 1;
-        if(tempi == BOARDHEIGHT) tempi = 0;
         for (int j = col-1; j <= col+1; j++) {
-            int tempj = j;
-            //checkOutOfBounds für j eventuell auslagern
-            if(tempj == -1) tempj = BOARDWIDTH - 1;
-            if(tempj == BOARDWIDTH) tempj = 0;
             if (i == row && j == col) continue;
-            //printf("%d//%d//", tempj, tempi);
-            if (board[tempi][tempj] == 'X'){
-                x_count += 1;
-                //printf("gefunden\n");
-                }
+            if (board[i % BOARDHEIGHT][j % BOARDWIDTH] == 'X') x_count += 1;
+
         }
     }
 
