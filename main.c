@@ -2,51 +2,23 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define BOARDWIDTH 5
-#define BOARDHEIGHT 5
-
+#define BOARDWIDTH 80
+#define BOARDHEIGHT 25
 #define MOD(a,b) ((((a)%(b))+(b))%(b))
 
+int checkNeighbours(int, int);
+void select();
+void setCustomCells();
+void printBoard();
+void cycle();
 void createBoard(char*[BOARDHEIGHT][BOARDWIDTH]);
 
 char board[BOARDHEIGHT][BOARDWIDTH];
 
-
-void setCustomCells(){
-    printf("Wie viele Koordinaten willst du eingeben?");
-    int cont;
-    scanf("%d", &cont);
-    for(int i = 0; i<cont; i++){
-        printf("Bitte Koordinaten eingeben <zeile spalte>");
-        int zeile, spalte;
-        scanf("%d %d", &zeile, &spalte);
-        if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1){
-             printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
-        } else {
-            board[zeile][spalte] = 'X';
-        }
-    }
-}
-
-void printBoard();
-
-int checkNeighbours(int, int);
-
-void cycle();
-/*
- * checkNeigh gibt x um eine zelle herum zurück
- * in cycle je nach inhalt und neighbours zelle in neuem board verwalten
- * altes board durch neues ersetzen
- */
 int main() {
     createBoard(board);
     printBoard();
-    //anfangsmuster ausgeben
-
-    //auswahl muster oder eigenes
-
-        //wenn eigenes, schleife mit koordinatenabfrage
-
+    select();
 
     while(1) {
         checkNeighbours(1, 0);
@@ -117,8 +89,6 @@ int checkNeighbours(int row, int col){
     return x_count;
 }
 
-
-
 void printBoard(){
     for(int i = 0; i < BOARDHEIGHT; i++) {
         printf("| ");
@@ -126,5 +96,66 @@ void printBoard(){
             printf("%c | ", board[i][j]);
         }
         printf("\n");
+    }
+}
+
+void select() {
+
+    int a;
+    scanf("%d", &a);
+    scanf("Bitte Auswahl Treffen: \n Blinker = 1\n Bienenstock = 2\n Leuchtfeuer = 3\n Leuchtfeuer = 4\n Gleiter = 5\n\n Andere Taste Koordinateneingabe.");
+
+
+    switch (a) {
+        //Blinker
+        case (1):
+            for (int i = 39; i < 42; i++) board[12][i] = 'X';
+            break;
+            //Block
+        case (2):
+            board[12][39] = 'X';
+            board[12][40] = 'X';
+            board[13][39] = 'X';
+            board[13][40] = 'X';
+            break;
+            //Bienenstock
+        case (3):
+            for (int i = 11; i < 15; i++) board[i][39] = 'X';
+            break;
+            //Leuchtfeuer
+        case (4):
+            board[12][39] = 'X';
+            board[12][38] = 'X';
+            board[11][38] = 'X';
+            board[10][42] = 'X';
+            board[9][41] = 'X';
+            board[9][42] = 'X';
+            break;
+            //Gleiter
+        case (5):
+            board[13][40] = 'X';
+            board[13][39] = 'X';
+            board[14][38] = 'X';
+            board[15][39] = 'X';
+            break;
+        default:
+            setCustomCells();
+    }
+
+}
+
+void setCustomCells(){
+    printf("Wie viele Koordinaten willst du eingeben?");
+    int cont;
+    scanf("%d", &cont);
+    for(int i = 0; i<cont; i++){
+        printf("Bitte Koordinaten eingeben <zeile spalte>");
+        int zeile, spalte;
+        scanf("%d %d", &zeile, &spalte);
+        if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1){
+            printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
+        } else {
+            board[zeile][spalte] = 'X';
+        }
     }
 }
