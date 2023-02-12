@@ -11,43 +11,37 @@ void select();
 void setCustomCells();
 void printBoard();
 void cycle();
-void createBoard(char*[BOARDHEIGHT][BOARDWIDTH]);
+void createBoard(char[BOARDHEIGHT][BOARDWIDTH]);
 
 char board[BOARDHEIGHT][BOARDWIDTH];
+char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 int main() {
+
     createBoard(board);
-    printBoard();
+    createBoard(boardZwei);
     select();
 
+
     while(1) {
-        checkNeighbours(1, 0);
+
         cycle();
         printBoard();
-        sleep(5);
+        sleep(1);
         system("cls");
 
     }
-    return 0;
-
 }
 
-void createBoard(char* emptyboard[BOARDHEIGHT][BOARDWIDTH]){
+void createBoard(char emptyboard[BOARDHEIGHT][BOARDWIDTH]){
     for(int i = 0; i<BOARDHEIGHT; i++){
         for(int j = 0; j<BOARDWIDTH; j++){
-            *emptyboard[i][j] = ' ';
+            emptyboard[i][j] = ' ';
         }
     }
 }
 
 void cycle(){
-    char boardZwei[BOARDHEIGHT][BOARDWIDTH] = {
-            {'X', 'X', ' ', ' ', 'X'},
-            {'X', 'X', ' ', ' ', 'X'},
-            {'X', ' ', ' ', ' ', ' '},
-            {'X', ' ', ' ', ' ', 'X'},
-            {'X', 'X', ' ', ' ', 'X'}};
-
 
     for(int i = 0; i < BOARDHEIGHT; i++){
         for(int j = 0; j < BOARDWIDTH; j++){
@@ -91,9 +85,8 @@ int checkNeighbours(int row, int col){
 
 void printBoard(){
     for(int i = 0; i < BOARDHEIGHT; i++) {
-        printf("| ");
         for (int j = 0; j < BOARDWIDTH; j++) {
-            printf("%c | ", board[i][j]);
+            printf("%c", board[i][j]);
         }
         printf("\n");
     }
@@ -102,8 +95,9 @@ void printBoard(){
 void select() {
 
     int a;
+    printf("Bitte Auswahl Treffen: \n Blinker = 1\n Block = 2\n Bienenstock = 3\n Leuchtfeuer = 4\n Gleiter = 5\n\nAndere Taste Koordinateneingabe.\n\n");
     scanf("%d", &a);
-    scanf("Bitte Auswahl Treffen: \n Blinker = 1\n Bienenstock = 2\n Leuchtfeuer = 3\n Leuchtfeuer = 4\n Gleiter = 5\n\n Andere Taste Koordinateneingabe.");
+
 
 
     switch (a) {
@@ -111,32 +105,33 @@ void select() {
         case (1):
             for (int i = 39; i < 42; i++) board[12][i] = 'X';
             break;
-            //Block
+        //Block
         case (2):
             board[12][39] = 'X';
             board[12][40] = 'X';
             board[13][39] = 'X';
             board[13][40] = 'X';
             break;
-            //Bienenstock
+        //Bienenstock
         case (3):
             for (int i = 11; i < 15; i++) board[i][39] = 'X';
             break;
-            //Leuchtfeuer
+        //Leuchtfeuer
         case (4):
             board[12][39] = 'X';
-            board[12][38] = 'X';
-            board[11][38] = 'X';
+            board[12][40] = 'X';
+            board[11][39] = 'X';
             board[10][42] = 'X';
             board[9][41] = 'X';
             board[9][42] = 'X';
             break;
-            //Gleiter
+        //Gleiter
         case (5):
             board[13][40] = 'X';
             board[13][39] = 'X';
-            board[14][38] = 'X';
-            board[15][39] = 'X';
+            board[13][38] = 'X';
+            board[12][40] = 'X';
+            board[11][39] = 'X';
             break;
         default:
             setCustomCells();
