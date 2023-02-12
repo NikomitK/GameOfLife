@@ -95,7 +95,8 @@ void printBoard(){
 void select() {
 
     int a;
-    printf("Bitte Auswahl Treffen: \n Blinker = 1\n Block = 2\n Bienenstock = 3\n Leuchtfeuer = 4\n Gleiter = 5\n\nAndere Taste Koordinateneingabe.\n\n");
+
+    printf("Bitte Auswahl Treffen: \n     - Blinker = 1\n     - Block = 2\n     - Bienenstock = 3\n     - Leuchtfeuer = 4\n     - Gleiter = 5\n\nBeliebige andere Taste f\u00dcr Koordinateneingabe.\n\n");
     scanf("%d", &a);
 
 
