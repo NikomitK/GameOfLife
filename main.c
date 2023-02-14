@@ -17,7 +17,7 @@ char board[BOARDHEIGHT][BOARDWIDTH];
 char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 int main() {
-
+    int generation = 0;
     createBoard(board);
     createBoard(boardZwei);
     select();
@@ -25,9 +25,10 @@ int main() {
 
     while(1) {
 
+        printf("\nGeneration: %d", ++generation);
         cycle();
         printBoard();
-        sleep(1);
+        //sleep(1);
         system("cls");
 
     }
@@ -84,6 +85,7 @@ int checkNeighbours(int row, int col){
 }
 
 void printBoard(){
+    
     for(int i = 0; i < BOARDHEIGHT; i++) {
         for (int j = 0; j < BOARDWIDTH; j++) {
             printf("%c", board[i][j]);
@@ -95,11 +97,8 @@ void printBoard(){
 void select() {
 
     int a;
-
     printf("Bitte Auswahl Treffen: \n     - Blinker = 1\n     - Block = 2\n     - Bienenstock = 3\n     - Leuchtfeuer = 4\n     - Gleiter = 5\n\nBeliebige andere Taste f\u00dcr Koordinateneingabe.\n\n");
     scanf("%d", &a);
-
-
 
     switch (a) {
         //Blinker
