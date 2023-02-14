@@ -7,6 +7,7 @@
 #define BOARDHEIGHT 25
 #define MOD(a,b) ((((a)%(b))+(b))%(b))
 
+void setup();
 int checkNeighbours(int, int);
 void select();
 void setCustomCells();
@@ -19,20 +20,25 @@ char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 int main() {
     int generation = 0;
-    createBoard(board);
-    createBoard(boardZwei);
-    select();
-
+    setup();
 
     while(1) {
 
+        system("cls");
         printf("Generation: %d\n", ++generation);
         cycle();
         printBoard();
-        //sleep(1);
-        system("cls");
+        printf("Druecke q zum Beenden\n");
+        if(getch() == 'q') break;
 
     }
+}
+
+void setup(){
+    system("cls");
+    createBoard(board);
+    createBoard(boardZwei);
+    select();
 }
 
 void createBoard(char emptyboard[BOARDHEIGHT][BOARDWIDTH]){
@@ -98,7 +104,7 @@ void select() {
 
     char input;
 
-    printf("Bitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
+    printf("\nBitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
 
     input = getch();
 
