@@ -9,6 +9,10 @@
 <tr><th>Abgabedatum</th><td>14.02.2023</td></tr>
 </table>
 
+## Userdokumentation
+
+Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls ein vorgegebenes Muster gewählt wird, beginnt sofort nach drücken der Taste die Simulation. Andernfalls wird der Nutzer gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Danach erfolgt die Simulation.
+
 ## Entwicklerdokumentation
 
 <table>
@@ -20,6 +24,4 @@
 <tr><th>void createBoard(char[BOARDHEIGHT][BOARDWIDTH])</th><td>Der Funktion wird ein character Array als Parameter übergeben. Dieses wird mit Leerzeichen ausgefüllt.</td></tr>
 </table>
 
-## Userdokumentation
 
-Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls ein vorgegebenes Muster gewählt wird, beginnt sofort nach drücken der Taste die Simulation. Andernfalls wird der Nutzer gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Danach erfolgt die Simulation.
