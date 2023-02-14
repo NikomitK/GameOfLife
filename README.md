@@ -11,11 +11,12 @@
 
 ## Userdokumentation
 
-Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls ein vorgegebenes Muster gewählt wird, beginnt sofort nach drücken der Taste die Simulation. Andernfalls wird der Nutzer gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Danach erfolgt die Simulation.
+Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls ein vorgegebenes Muster gewählt wird, beginnt sofort nach drücken der Taste die Simulation. Andernfalls wird der Nutzer gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Danach wird beim Drücken einer Taste die nächste Generation angezeigt. Um die Simulation zu beenden muss die Taste 'q' gedrückt werden.
 
 ## Entwicklerdokumentation
 
 <table>
+<tr><th>void setup()</th><td>Die Methode leert die Konsole, ruft die createBoard Methode für beide Boards auf und ruft die Methode select für die Abfrage der Startkonfiguration auf.<td></tr>
 <tr><th>int checkNeighbours(int, int)</th><td>Der Funktion werden die Koordinaten des aktuellen Felds übergeben. Mit einer geschachtelten Schleife werden die 8 Nachbarfelder überprüft. Falls zu überprüfenden Felder außerhalb des Felds liegen würden, wird mithilfe einer selbst definierten Modulo Funktion das korrekte Feld am anderen Rand überprüft.</td></tr>
 <tr><th>void select()</th><td>Es werden Auswahlmöglichkeiten in der Konsole ausgegeben. Der Nutzer kann entweder eine auswählen oder durch drücken einer anderen Taste eigene Koordinaten eingeben.</td></tr>
 <tr><th>void setCustomCells()</th><td>Der Nutzer wird gefragt wie viele Koordinaten er eingeben will. Anschließend werden mithilfe einer Schleife dementsprechend viele Koordinaten eingelesen.</td></tr>
