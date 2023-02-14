@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <conio.h>
+#include <time.h>
 
 #define BOARDWIDTH 80
 #define BOARDHEIGHT 25
 #define MOD(a,b) ((((a)%(b))+(b))%(b))
 
+int mode = 0;
 void setup();
 int checkNeighbours(int, int);
 void select();
@@ -24,17 +25,19 @@ int main() {
 
     while(1) {
 
+        int auswahl = 0;
         system("cls");
+        printf("Druecke q zum Beenden\n");
         printf("Generation: %d\n", ++generation);
         cycle();
         printBoard();
-        printf("Druecke q zum Beenden\n");
-        if(getch() == 'q') break;
+        if(mode == 0 && getch() == 'q') break;
 
     }
 }
 
 void setup(){
+    srand(time(NULL));
     system("cls");
     createBoard(board);
     createBoard(boardZwei);
@@ -104,7 +107,7 @@ void select() {
 
     char input;
 
-    printf("\nBitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
+    printf("\nBitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n     - Zufaellig = f\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
 
     input = getch();
 
@@ -140,11 +143,22 @@ void select() {
             board[12][40] = 'X';
             board[11][39] = 'X';
             break;
+        case('f'):
+            for(int i = 0; i < BOARDHEIGHT; i++) {
+                for (int j = 0; j < BOARDWIDTH; j++) {
+                    if(rand() % 2) board[i][j] = 'X';
+                }
+            }
+            break;
         default:
             setCustomCells();
             break;
     }
 
+    printf("Bitte Modus auswaehlen: \n     - Manuelles Fortschreiten = 0\n     - Automatisches Fortschreiten = 1");
+    input = getch();
+
+    if(input == '1') mode = 1;
 }
 
 void setCustomCells(){
@@ -156,7 +170,7 @@ void setCustomCells(){
         int zeile, spalte;
         scanf("%d %d", &zeile, &spalte);
         if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1){
-            printf("Ungültige Koordinaten, die Spielfeldgroesse beträgt: %d Zeilen und %d Spalten");
+            printf("Ungueltige Koordinaten, die Spielfeldgroesse betraegt: %d Zeilen und %d Spalten");
         } else {
             board[zeile][spalte] = 'X';
         }
