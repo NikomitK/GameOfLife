@@ -25,13 +25,13 @@ int main() {
 
     while(1) {
 
-        int auswahl = 0;
         system("cls");
-        printf("Druecke q zum Beenden\n");
+        printf("Dr\x81""cke Str+C zum Beenden\n");
         printf("Generation: %d\n", ++generation);
+        if(generation == 69) printf("nice\n");
         cycle();
         printBoard();
-        if(mode == 0 && getch() == 'q') break;
+        if(mode == 0 && getch() == '\x03') break;
 
     }
 }
@@ -107,7 +107,7 @@ void select() {
 
     char input;
 
-    printf("\nBitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n     - Zufaellig = f\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
+    printf("\nBitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n     - Zuf\x84llig = f\n\nBeliebige andere Taste f\x81r Koordinateneingabe.\n\n");
 
     input = getch();
 
@@ -155,7 +155,7 @@ void select() {
             break;
     }
 
-    printf("Bitte Modus auswaehlen: \n     - Manuelles Fortschreiten = 0\n     - Automatisches Fortschreiten = 1");
+    printf("Bitte Modus ausw\x84hlen: \n     - Manuelles Fortschreiten = 0\n     - Automatisches Fortschreiten = 1");
     input = getch();
 
     if(input == '1') mode = 1;
@@ -170,7 +170,7 @@ void setCustomCells(){
         int zeile, spalte;
         scanf("%d %d", &zeile, &spalte);
         if(zeile >= BOARDHEIGHT || spalte >= BOARDWIDTH || zeile == -1 || spalte == -1){
-            printf("Ungueltige Koordinaten, die Spielfeldgroesse betraegt: %d Zeilen und %d Spalten");
+            printf("Ung\x81ltige Koordinaten, die Spielfeldgr\x94sse betr\x84gt: %d Zeilen und %d Spalten");
         } else {
             board[zeile][spalte] = 'X';
         }
