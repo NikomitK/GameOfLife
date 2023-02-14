@@ -26,7 +26,7 @@ int main() {
 
     while(1) {
 
-        printf("\nGeneration: %d", ++generation);
+        printf("Generation: %d\n", ++generation);
         cycle();
         printBoard();
         //sleep(1);
