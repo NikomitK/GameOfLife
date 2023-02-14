@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <conio.h>
 
 #define BOARDWIDTH 80
 #define BOARDHEIGHT 25
@@ -27,7 +28,7 @@ int main() {
 
         cycle();
         printBoard();
-        sleep(1);
+        //sleep(1);
         system("cls");
 
     }
@@ -94,31 +95,29 @@ void printBoard(){
 
 void select() {
 
-    int a;
+    char input;
 
-    printf("Bitte Auswahl Treffen: \n     - Blinker = 1\n     - Block = 2\n     - Bienenstock = 3\n     - Leuchtfeuer = 4\n     - Gleiter = 5\n\nBeliebige andere Taste f\u00dcr Koordinateneingabe.\n\n");
-    scanf("%d", &a);
+    printf("Bitte Auswahl Treffen: \n     - Blinker = a\n     - Block = b\n     - Bienenstock = c\n     - Leuchtfeuer = d\n     - Gleiter = e\n\nBeliebige andere Taste fuer Koordinateneingabe.\n\n");
 
+    input = getch();
 
-
-    switch (a) {
-        //Blinker
-        case (1):
+    switch (input) {
+        case ('a'):
             for (int i = 39; i < 42; i++) board[12][i] = 'X';
             break;
         //Block
-        case (2):
+        case ('b'):
             board[12][39] = 'X';
             board[12][40] = 'X';
             board[13][39] = 'X';
             board[13][40] = 'X';
             break;
         //Bienenstock
-        case (3):
+        case ('c'):
             for (int i = 11; i < 15; i++) board[i][39] = 'X';
             break;
         //Leuchtfeuer
-        case (4):
+        case ('d'):
             board[12][39] = 'X';
             board[12][40] = 'X';
             board[11][39] = 'X';
@@ -127,7 +126,7 @@ void select() {
             board[9][42] = 'X';
             break;
         //Gleiter
-        case (5):
+        case ('e'):
             board[13][40] = 'X';
             board[13][39] = 'X';
             board[13][38] = 'X';
@@ -136,12 +135,13 @@ void select() {
             break;
         default:
             setCustomCells();
+            break;
     }
 
 }
 
 void setCustomCells(){
-    printf("Wie viele Koordinaten willst du eingeben?");
+    printf("Wie viele Koordinaten willst du eingeben?\n");
     int cont;
     scanf("%d", &cont);
     for(int i = 0; i<cont; i++){
