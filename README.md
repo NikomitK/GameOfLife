@@ -2,7 +2,7 @@
 
 <table>
 <tr><th>Ersteller</th><td>Nikolas Bodenmüller, Fabian Sigmund</td></tr>
-<tr><th>Betreuer</th><td>Jonas Fritzsch</td></tr>
+<tr><th>Betreuer</th><td>Jonas Fritzsch, M.Sc.</td></tr>
 <tr><th>Studiengang/Kurs</th><td>B. Sc. Informatik TINF22F</td></tr>
 <tr><th>Anlass</th><td>Programmierprojekt</td></tr>
 <tr><th>Bearbeitungszeitraum</th><td>03.02.2023 - 14.02.2023</td></tr>
@@ -11,7 +11,7 @@
 
 ## Userdokumentation
 
-Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls ein vorgegebenes Muster gewählt wird, beginnt sofort nach drücken der Taste die Simulation. Andernfalls wird der Nutzer gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Danach wird beim Drücken einer Taste die nächste Generation angezeigt. Um die Simulation zu beenden muss die Taste 'q' gedrückt werden.
+Beim Starten des Programms wird dem Nutzer die Auswahl aus verschiedenen Mustern gegeben. Die Auswahl erfolgt durch Eingabe eines angezeigten Zeichens. Falls der Nutzer ein eigenes Startmuster festlegen will, kann er ein beliebiges anderes Zeichen eingeben. Falls der Nutzer eigene Koordinaten eingeben will, wird er gefragt wie viele Zellen er manuell eingeben will. Anschließend kann er dementsprechend viele Koordinatenpaare eintragen. Zuletzt muss noch ausgewählt werden, ob eine neue Generation automatisch oder beim Drücken einer Taste angezeigt wird. Um die Simulation zu beenden muss die Taste 'q' gedrückt werden.
 
 ## Entwicklerdokumentation
 
