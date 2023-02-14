@@ -1,4 +1,4 @@
-Conway's Game of Life in C
+# Conway's Game of Life in C
 
 <table>
 <tr><th>Ersteller</th><td>Nikolas Bodenmüller, Fabian Sigmund</td></tr>
