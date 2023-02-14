@@ -18,7 +18,7 @@ char board[BOARDHEIGHT][BOARDWIDTH];
 char boardZwei[BOARDHEIGHT][BOARDWIDTH];
 
 int main() {
-
+    int generation = 0;
     createBoard(board);
     createBoard(boardZwei);
     select();
@@ -26,6 +26,7 @@ int main() {
 
     while(1) {
 
+        printf("\nGeneration: %d", ++generation);
         cycle();
         printBoard();
         //sleep(1);
