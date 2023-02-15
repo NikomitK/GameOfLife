@@ -28,10 +28,11 @@ int main() {
         system("cls");
         printf("Dr\x81""cke Str+C zum Beenden\n");
         printf("Generation: %d\n", ++generation);
-        if(generation == 69) printf("nice\n");
-        cycle();
         printBoard();
         if(mode == 0 && getch() == '\x03') break;
+        if(generation == 69) printf("nice\n");
+        cycle();
+
 
     }
 }
